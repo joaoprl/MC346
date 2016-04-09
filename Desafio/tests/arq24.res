@@ -1,0 +1,1 @@
+|: erro; syntax error

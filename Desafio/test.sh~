@@ -1,0 +1,34 @@
+for i in {1..9}
+do
+    swipl -q -f main.pl -g main -t halt < tests/arq0$i.in > tests/arq0$i.out2
+done
+
+for i in {10..25}
+do
+    swipl -q -f main.pl -g main -t halt < tests/arq$i.in > tests/arq$i.out2
+done
+	 
+
+for i in {51..62}
+do
+    swipl -q -f main.pl -g main -t halt < tests/arq$i.in > tests/arq$i.out2
+done	 
+
+for i in {1..9}
+do
+    echo $i
+    diff tests/arq0$i.out2 tests/arq0$i.res
+done
+
+for i in {10..25}
+do
+    echo $i
+    diff tests/arq$i.out2 tests/arq$i.res
+done
+	 
+
+for i in {51..62}
+do
+    echo $i
+    diff tests/arq$i.out2 tests/arq$i.res
+done	 
