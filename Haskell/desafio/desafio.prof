@@ -1,0 +1,60 @@
+	Thu May 19 04:29 2016 Time and Allocation Profiling Report  (Final)
+
+	   desafio +RTS -p -RTS
+
+	total time  =        0.71 secs   (709 ticks @ 1000 us, 1 processor)
+	total alloc = 820,052,312 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE  %time %alloc
+
+main.l.\        Main     34.1   36.7
+insertT         Main     29.2   28.6
+process2.rect.\ Main     15.9   20.6
+process2.rect   Main      8.7    0.2
+main.l          Main      5.1    7.0
+main            Main      1.4    4.9
+listQuicksort   Main      1.3    1.1
+eRect           Main      1.3    0.0
+
+
+                                                                  individual     inherited
+COST CENTRE           MODULE                    no.     entries  %time %alloc   %time %alloc
+
+MAIN                  MAIN                       46           0    0.0    0.0   100.0  100.0
+ CAF                  Main                       91           0    0.0    0.0   100.0  100.0
+  main                Main                       92           1    1.4    4.9   100.0  100.0
+   main.str           Main                      119           1    0.0    0.0     0.0    0.0
+   createIDList       Main                      118          11    0.0    0.0     0.0    0.0
+   main.min           Main                      104           1    0.0    0.0     0.0    0.0
+   main.l             Main                       96           1    5.1    7.0    43.4   45.0
+    main.l.\          Main                      107       40011   34.1   36.7    34.1   36.7
+    process           Main                      101           1    0.0    0.1     0.0    0.1
+    listQuicksort     Main                       97         797    1.3    1.1     4.2    1.1
+     lRect            Main                      109      102519    1.0    0.0     1.0    0.0
+     eRect            Main                      108      102519    1.3    0.0     1.3    0.0
+     listQuicksort.x  Main                       99         398    0.0    0.0     0.0    0.0
+      getX            Main                      100         398    0.0    0.0     0.0    0.0
+       getX.(...)     Main                      106         396    0.0    0.0     0.0    0.0
+       getX.x2        Main                      105         396    0.0    0.0     0.0    0.0
+       getX.(...)     Main                      103         396    0.0    0.0     0.0    0.0
+       getX.x1        Main                      102         396    0.0    0.0     0.0    0.0
+     gRect            Main                       98      102519    0.7    0.0     0.7    0.0
+   main.(...)         Main                       94           1    0.0    0.0    55.1   50.1
+    process2          Main                       95       10002    0.0    0.3    55.1   50.1
+     getIDList        Main                      121          11    0.0    0.0     0.0    0.0
+     process2.str     Main                      120           1    0.0    0.0     0.0    0.0
+     process2.rect    Main                      115       10001    8.7    0.2    25.1   20.8
+      process2.rect.\ Main                      117     2642300   15.9   20.6    15.9   20.6
+      getValue        Main                      116       10001    0.4    0.0     0.4    0.0
+     process2.size    Main                      113       10001    0.8    0.3     0.8    0.3
+      getSize         Main                      114       10001    0.0    0.0     0.0    0.0
+     insertT          Main                      112     1957746   29.2   28.6    29.2   28.6
+     process2.(...)   Main                      111           1    0.0    0.0     0.0    0.0
+     process2.v       Main                      110           1    0.0    0.0     0.0    0.0
+   main.v             Main                       93           1    0.0    0.0     0.0    0.0
+ CAF                  GHC.Conc.Signal            90           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding            86           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Encoding.Iconv      85           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Handle.FD           79           0    0.0    0.0     0.0    0.0
+ CAF                  GHC.IO.Handle.Internals    78           0    0.0    0.0     0.0    0.0
+ CAF                  Text.Read.Lex              68           0    0.0    0.0     0.0    0.0

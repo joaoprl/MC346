@@ -1,0 +1,20 @@
+
+prime n =
+      [x | a <- prime (n - 1), mod x a == 0]
+
+replicate' _ [] = []
+replicate' 0 _ = []
+replicate' n (x:xs) =
+	   [x] ++ replicate' (n-1) [x] ++ replicate' n xs
+
+zip1 xs ys = [ (x,y) | a<-[1..min(length ys) (length xs)], x <- [(xs!!(a-1))], y <- [(ys!!(a-1))]]
+
+
+doubleUs x y = doubleMe x + doubleMe y
+
+doubleMe x = 2 * x
+
+doubleSmallNumber x =
+		  if x > 100
+		  then x
+		  else x * 2

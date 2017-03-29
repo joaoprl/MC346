@@ -1,0 +1,4 @@
+
+
+decodifica :: [(Char, Int) -> [Char]
+decodifica l = [x| (c,n) <- l, take n (repeat c)]

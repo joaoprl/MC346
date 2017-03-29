@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>MC346 - Paradigmas de Programação: Programação com Objetos: Desafio</title>
+    
+    <link rel="stylesheet" href="../../files/course.css">
+    
+    <!-- ********* ICONE *******************-->
+    
+    <link rel="shortcut icon" href="../../files/mc346.ico">
+  </head>  
+  
+  <body>
+    
+    <!-- ********* Cabecalho ***************-->
+    
+    <h1>MC346 - Paradigmas de Programação: Programação com Objetos: Desafio</h1>
+    
+    <!-- ********* REVISOES ***************-->
+    
+    <pre>
+      Criada: 2016-04-30
+    </pre>
+    
+    <!-- ********* CORPO ***************-->
+
+    <h2>Projeto Python</h2>
+    
+    <p>
+      Seu desafio envolvendo a linguagem Python será calcular o elo
+      mais fraco de uma coleção de intervalos.
+    </p>
+    
+    <h2>Elo mais fraco</h2>
+    
+    <p>
+      Nosso desafio em Python envolve intervalos de coordenadas
+      inteiras na reta real.  Imagine que temos dois tais intervalos
+      com uma intersecção não vazia, por exemplo, [-2, 10] e [8, 20].
+      Neste caso, a união entre eles resultará em [-2, 20], que é
+      também um intervalo.  Mas, se encurtarmos cada um destes
+      intervalos em seu extremo final em k unidades, será que a união
+      deles continua sendo um intervalo?  Depende do valor de k.  Se k
+      &le; 2, a união ainda será um intervalo.  Se k &gt; 2, a união
+      deixa de ser um intervalo.  Dizemos então que 2 é o valor
+      do <strong>elo mais fraco</strong> para estes dois intervalos.
+    </p>
+
+    <p>
+      Esta definição pode ser estendida a uma coleção qualquer de
+      intervalos.  Por exemplo, considere a coleção contendo [0, 10],
+      [5, 15], [14, 16], [15, 17].  A união destes todos é um
+      intervalo: [0, 17].  Mas, se encurtarmos cada um no final em 2
+      unidades, ficaremos com [0, 8], [5, 13], [14, 14], [15, 15].
+      Apareceram "buracos" entre 13 e 14, e também entre 14 e 15.  A
+      união não é mais um intervalo, pois quebrou-se o elo entre os
+      intervalos originais [5, 15] e [14, 16], e também o elo entre os
+      intervalos originais [14, 16] e [15, 17].  Estes dois elos são
+      os <strong>elos mais fracos</strong> da coleção e o valor destes
+      elos é 1.  Note que o elo entre os intervalos originais [5, 15]
+      e [15, 17] não conta, pois este é um elo redundante, já que
+      podemos ir de [5, 15] a [15, 17] inderetamente, passando por
+      [14, 16].
+    </p>
+
+    <p>
+      É importante esclarecer como esta definição funciona no caso de
+      intervalos contidos uns nos outros.  Tome como exemplo a coleção
+      [0, 10], [5, 15], [2, 4].  A união é [0, 15] e portanto é um
+      intervalo.  Se encurtarmos todos eles em duas unidades no final
+      teremos [0, 8], [5, 13], [2, 2], cuja união ainda é um
+      intervalo.  Porém, se encurtarmos em 3 unidades no final, o elo
+      entre os dois primeiros intervalos se mantém, mas o intervalo
+      [2, 4] desaparece.  Não podemos deixar nenhum intervalo
+      desaparecer, pois neste caso ele não consegue se ligar a nenhum
+      outro.  Então, a definição deve ser interpretada de forma a não
+      deixar nenhum intervalo desaparecer.  Olhado de outra forma,
+      podemos dizer que o elo entre [0, 10] e [2, 4] tem valor 2, que
+      é o tamanho do intervalo contido.  Tendo tudo isto em vista,
+      neste nosso exemplo com intervalos contidos, o valor
+      do <strong>elo mais fraco</strong> acaba sendo 2 mesmo.
+    </p>
+
+    <p>
+      A definição pode ser usada mesmo para coleções cuja a união não
+      é um intervalo de início.  Por exemplo, considere [0, 10] e [15,
+      20].  Neste caso, para conseguir o elo mais fraco temos que
+      encurtar o final de cada intervalo de um
+      valor <strong>negativo</strong>, o que equivale a alongar o
+      final dos intervalos.  Assim, o valor do <strong>elo mais
+      fraco</strong> neste caso é -5.  Encurtar esta coleção em -5
+      unidades produz uma união que é um intervalo, mas encurtá-la de
+      um valor maior que -5 não produzirá um intervalo ao fazermos a
+      união.
+    </p>
+
+    <h2>Desafio</h2>
+
+    <p>
+      Seu desafio nesta etapa será escrever um programa em Python que
+      receba uma coleção de zero ou mais intervalos com coordenadas
+      inteiras e calcule o valor do <strong>elo mais fraco</strong>
+      desta coleção.  Se a coleção tiver zero ou um elementos, seu
+      programa deverá retornar a palavra <strong>erro</strong>.  Se a
+      coleção tiver dois ou mais intervalos, então o programa deve
+      retornar o valor do <strong>elo mais fraco</strong> desta
+      coleção, definido como sendo o valor inteiro k (positivo ou não)
+      tal que:
+    </p>
+
+    <ol>
+      <li>
+	k é maior ou igual ao tamanho de cada intervalo da coleção;
+      </li>
+      <li>
+	se encurtarmos k unidades cada um dos intervalos no final, a
+	união dos intervalos encurtados produzirá um intervalo;
+      </li>
+      <li>
+	se encurtarmos cada intervalo em mais de k unidades no
+	final, ou alguns deles desapareceram, ou então a coleção
+	resultante tem uma união que não é um intervalo.
+      </li>
+    </ol>
+    
+    <h2>Entrada</h2>
+    
+    <p>
+      Você deverá receber do dispositivo de entrada padrão um texto
+      contendo os intervalos. Intervalos serão
+      dados como um identificador inteiro seguido de 2 inteiros
+      indicando as coordenadas dos vértices extremos do intervalo, na
+      forma:
+    </p>
+
+    <blockquote>
+      <code>id xmin xmax</code>
+    </blockquote>
+
+    <p>
+      Será dada como entrada uma lista de tais intervalos, um por
+      linha, em uma ordem qualquer.
+    </p>
+
+    <p>
+      Você terá que verificar se os intervalos são válidos e se os
+      identificadores são distintos.
+    </p>
+
+    <h2>Saída</h2>
+    
+    <p>
+      Seu programa deverá imprimir no dispositivo de saída padrão o
+      valor numérico do elo mais fraco, ou a palavra "erro" se a
+      entrada não for válida por qualquer motivo.  Neste caso, após
+      "erro" e um ponto-e-vírgula, poderá vir uma mensagem de erro
+      mais informativa sobre o problema encontrado.
+    </p>
+    
+    <p>
+      Para facilitar a depuração, outras informações podem ser
+      escritas na saída padrão, da seguinte forma.  Após o resultado,
+      imprimir ponto-e-vírgula (";") seguido da informação extra
+      desejada.  O verificador de respostas corretas será instruído a
+      ignorar tudo o que vier após o ponto-e-vírgula.  Porém, em todos
+      os casos, a saída padrão deverá ser constituída de uma única
+      linha.
+    </p>
+    
+    <h2>Avaliação</h2>
+    
+    <p>
+      Em princípio, a nota recebida será composta da seguinte forma:
+    </p>
+    <ul>
+      <li>
+	70% nota de correção
+      </li>
+      <li>
+	10% nota de estilo
+      </li>
+      <li>
+	10% nota de comentários
+      </li>
+      <li>
+	10% nota de mensagens de diagnóstico
+      </li>
+    </ul>
+    
+    <p>
+      A nota de correção será o quociente entre o número de testes
+      abertos e fechados acertados e o número total de testes abertos
+      e fechados.
+    </p>
+    <p>
+      A nota de estilo avaliará o bom estilo de objetos do
+      programador.  Serão levados em conta aspectos como uso de
+      objetos, warnings, trechos de código desnecessários, nomes de
+      funções e variáveis, funções ou subrotinas muito compridas,
+      modularização, etc.
+    </p>
+    <p>
+      A nota de comentários avaliará a qualidade dos comentários
+      dispostos no código.  Este poderia ser um quesito do estilo, mas
+      comentários são tão importantes que merecem um item de avaliação
+      à parte.
+    </p>
+    <p>
+      A nota de mensagens de diagnóstico avaliará a qualidade da
+      informação extra impressa a título de diagnóstico, especialmente
+      nos casos em que a saída for "erro".
+    </p>
+
+    <hr>
+    <p><a HREF="../index.html">MC346 Home</a></p>
+    
+    <!-- ********* COPYRIGHT ***************-->
+    
+    <p>&copy; 2016 João Meidanis</p>
+    
+  </body>
+</html>
